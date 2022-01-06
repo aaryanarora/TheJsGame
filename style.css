@@ -1,9 +1,15 @@
+body{
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(160,160,240,1) 46%, rgba(0,212,255,1) 100%);
+}
 .grid{
     height: 560px;
     width: 560px;
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
+    background-color:#00000052;
     border: 5px solid black;
     border-radius: 5px;
 }
