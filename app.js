@@ -47,6 +47,21 @@ squares.forEach(square => square.addEventListener('dragenter',dragEnter));
 squares.forEach(square => square.addEventListener('dragleave',dragLeave));
 squares.forEach(square => square.addEventListener('drop',dragDrop));
 
+function blank()
+{
+    for(let i =0 ;i<width*width;i++)
+    {
+        if(squares[i].style.backgroundColor === 'white')
+        {
+            squares[i].setAttribute('draggable',false);
+        }
+        else
+        {
+            squares[i].setAttribute('draggable',true);
+        }
+    }
+}
+
 function dragStart(){
     colorBeingDragged = this.style.backgroundColor;
     squareIdBeingDragged = parseInt(this.id);
@@ -114,13 +129,13 @@ function moveDown(){
             squares[i+width].style.backgroundColor = squares[i].style.backgroundColor;//replace by above ones
             squares[i].style.backgroundColor = 'white'; // make above ones blank
 
-            const firstRow = [0,1,2,3,4,5,6,7];
-            const isFirstRow = firstRow.includes(i); // returns true if first row
-            if(isFirstRow && squares[i].style.backgroundColor === 'white')
-            {
-                let randomColor = Math.floor(Math.random() * candyColors.length)
-                squares[i].style.backgroundColor = candyColors[randomColor];//give random colour to blank spaces
-            }
+            // const firstRow = [0,1,2,3,4,5,6,7];
+            // const isFirstRow = firstRow.includes(i); // returns true if first row
+            // if(isFirstRow && squares[i].style.backgroundColor === 'white')
+            // {
+            //     let randomColor = Math.floor(Math.random() * candyColors.length)
+            //     squares[i].style.backgroundColor = candyColors[randomColor];//give random colour to blank spaces
+            // }
         }
     }
 }
@@ -227,7 +242,8 @@ function checkColumnForThree(){
     
     checkColumnForThree();
 window.setInterval(function(){ //to keep running every 100 mili sec
-    checkRowForThree();
+    blank();
+    checkRowForThree();   
     checkColumnForThree();
     checkRowForFour();
     checkColumnForFour();
